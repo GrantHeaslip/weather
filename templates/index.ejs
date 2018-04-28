@@ -1,0 +1,31 @@
+<%- include('includes/layout/top') %>
+<section id="current">
+    <div class="icon-container">
+        <img class="icon" />
+    </div>
+    <div class="text-container">
+        <select></select>
+        <p class="temp" id="current-temp"></p>
+        <p class="description" id="current-description"></p>
+    </div>
+</section>
+<section id="forecasts" style="display: none;">
+    <table>
+        <thead>
+            <tr>
+                <th class="icon"></th>
+                <th class="datetime">Date</th>
+                <th class="low">Low</th>
+                <th class="high">High</th>
+                <th class="pop">POP</th>
+                <th class="description">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</section>
+<footer>
+    <p>Developed by <a href="http://grant.heaslip.me/">Grant Heaslip</a>. <a id="weather-page-link" href="http://weather.gc.ca/canada_e.html">Data</a> from <a href="http://weather.gc.ca/business/index_e.html#rss">Environment Canada</a> via <a href="https://developer.yahoo.com/yql/">YQL</a>. <a href="http://adamwhitcroft.com/climacons/">Icons by Adam Whitcroft</a>.</p>
+</footer>
+<%- include('includes/layout/bottom') %>

@@ -1,0 +1,283 @@
+html {
+    overflow-y: scroll;
+}
+
+html, body {
+    color: #212121;
+    background: #fff;
+    font-size: 16px;
+    font-size-adjust: 0.466;
+    line-height: 1.5em;
+    font-weight: 400;
+    text-rendering: optimizelegibility;
+    -webkit-text-size-adjust: 100%;
+    margin: 0em;
+    background-color: #666;
+    font-family: "Calibri", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+#centred {
+    width: 100%;
+    padding: 1rem;
+    /*padding-bottom: 4em;*/
+    margin: 1em auto;
+    overflow: show;
+    max-width: 632px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 1em;
+    box-shadow: 0px 0.75rem 2rem #222;
+    line-height: 0rem;
+    /*box-shadow: rgba(27, 29, 32, 0.901961) 0px 1px 2px 0px, rgba(27, 29, 32, 0.498039) 0px 10px 12px 0px, rgba(27, 29, 32, 0.4) 0px 20px 30px 0px, rgba(27, 29, 32, 0.34902) 0px 0px 50px 0px;*/
+}
+
+#header {
+    padding-top: 1em;
+    padding-left: 1.5em;
+}
+
+#header h1 {
+    display: inline-block;
+    font-size: 1.5rem;
+}
+
+#current {
+    display: inline-block;
+    width: 100%;
+    margin-top: 0rem;
+    margin-left: 0rem;
+    margin-bottom: 1rem;
+}
+
+#current h1 {
+    margin-bottom: 0rem;
+}
+
+#current .icon-container {
+    height: 8rem;
+    width: 8rem;
+    float: left;
+    display: block;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 0px solid #212121;
+}
+
+#current img.icon {
+    margin-top: -25%;
+    margin-left: -25%;
+    height: 150%;
+    width: 150%;
+}
+
+#current img.icon.dark {
+    -webkit-filter: invert(100%);
+    -moz-filter: invert(100%);
+    -ms-filter: invert(100%);
+    filter: invert(100%);
+}
+
+#current .text-container {
+    height: 8rem;
+    float: left;
+    margin-left: 1rem;
+    padding-top: 0.8rem;
+    box-sizing: border-box;
+}
+
+#current select {
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 1.5rem;
+    border-color: #212121;
+    background-color: #fff;
+    font-family: "Calibri", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-weight: bold;
+    display: block;
+    margin-left: -0.5rem;
+    box-shadow: 0px 0px 0.2rem #666 inset;
+    padding-left: 0.15rem;
+    border-radius: 0.25rem;
+}
+
+#current select option {
+    font-size: 1rem;
+}
+
+#current p {
+    display: block;
+    float: left;
+}
+
+
+#current p.temp {
+    font-size: 3rem;
+    line-height: 3rem;
+    height: 3rem;
+    font-weight: bold;
+    margin: 0rem;
+}
+
+#current p.description {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    height: 1.5rem;
+    clear: left;
+    margin: 0rem;
+}
+
+#forecasts {
+    margin-top: 0rem;
+    display: inline-block;
+    width: 100%;
+}
+
+#forecasts table {
+    margin-left: 0rem;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+
+#forecasts td {
+    text-align: left;
+}
+
+#forecasts .low, #forecasts .high, #forecasts .pop {
+    text-align: right;
+    width: 2rem;
+}
+
+#forecasts .datetime {
+    /*width: 8rem;*/
+    width: 40%;
+}
+
+#forecasts .description {
+    width: 60%;
+}
+
+#forecasts .icon-container {
+    width: 2rem;
+    height: 2rem;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+#forecasts img.icon {
+    width: 3rem;
+    height: 3rem;
+    margin-top: -0.5em;
+    margin-left: -0.5rem;
+}
+
+#forecasts th {
+    text-align: left;
+}
+
+#forecasts tr {
+    height: auto;
+}
+
+#forecasts tr td.dark, #forecasts tr th.dark  {
+    color: #fff !important;
+}
+
+#forecasts tr td.light, #forecasts tr th.light {
+    color: #212121 !important;
+}
+
+#forecasts tr.night-row td {
+    background-color: #212121;
+    color: #fff;
+    border-right-color: #fff;
+}
+
+#forecasts tr.night-row img {
+    -webkit-filter: invert(100%);
+    -moz-filter: invert(100%);
+    -ms-filter: invert(100%);
+    filter: invert(100%);
+}
+
+#forecasts tr td.datetime {
+    border-right-color: #212121;
+}
+
+#forecasts tr td.low, #forecasts tr td.high, #forecasts tr td.pop {
+    border-right-color: #212121;
+    background-color: #fff;
+    color: #212121;
+}
+
+#forecasts tr td:last-child {
+    border-right-color: #212121;
+}
+
+#forecasts table td, #forecasts table th {
+    padding: 0rem 0.25rem;
+    border: 1px solid #212121;
+    line-height: 1rem;
+    box-sizing: border-box;
+    height: 2.25rem;
+}
+
+footer {
+    font-size: 0.8rem;
+    color: #666;
+    padding-top: 1rem;
+    line-height: 1.6em;
+}
+
+footer p, footer a {
+    color: #555;
+}
+
+footer p {
+    margin: 0rem;
+}
+
+@media (max-width: 650px) {
+    html, body {
+        background-color: #fff;
+    }
+    #centred {
+        box-shadow: none;
+        padding: 0.5rem;
+        padding-top: 0rem;
+    }
+}
+
+@media (max-width: 550px) {
+    html, body {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 450px) {
+    html, body {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 340px) {
+    #current select {
+        max-width: 190px;
+    }
+}
+
+@media (max-width: 319px) {
+    #centred {
+        margin-top: 0rem;
+    }
+
+    #current {
+        margin-bottom: 0rem;
+    }
+
+    #current div.icon-container {
+        height: 4rem !important;
+        width: 4rem !important;
+        margin-top: 2rem;
+    }
+}
