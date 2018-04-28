@@ -19,6 +19,7 @@
         "node": "^10.0.0"
     },
     "dependencies": {
+        "catbox-redis": "^4.1.0",
         "del": "^3.0.0",
         "ejs": "^2.5.8",
         "gulp": "^3.9.1",

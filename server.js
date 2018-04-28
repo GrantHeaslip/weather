@@ -1,14 +1,14 @@
 'use strict';
 
 const Boom = require('boom');
-const hapi = require('hapi');
+const catboxRedis = require('catbox-redis');
 const ejs = require('ejs');
+const hapi = require('hapi');
 const inert = require('inert');
 const throng = require('throng');
 const vision = require('vision');
 
 const config = require('./lib/config');
-const routes = require('./lib/routes');
 const utils = require('./lib/utils');
 const viewHelpers = require('./lib/view-helpers');
 
@@ -30,10 +30,29 @@ async function start() {
         console.info('Starting in production mode.');
     }
 
+    const appVersion = await utils.getAppVersion();
+
+    const cachePartitionName = `weather-${appVersion}`.replace(/(\.)/g, '-');
+
     // Create server
     const server = hapi.server({
+        app: {
+            version: appVersion,
+        },
+        cache: [
+            {
+                name: 'redis',
+                engine: catboxRedis,
+                host: '127.0.0.1',
+                partition: cachePartitionName,
+                port: 6379,
+            },
+        ],
         compression: {
             minBytes: 512,
+        },
+        debug: {
+            request: ['error'] // TODO: Make env-dependent
         },
         host: '0.0.0.0',
         port: config.port,
@@ -58,13 +77,13 @@ async function start() {
         path: 'templates',
         context: {
             'appEnv': config.env,
-            'appVersion': await utils.getAppVersion(),
+            'appVersion': appVersion,
             'static': partiallyAppliedStaticHelper,
         },
     });
 
     // Load routes
-    server.route(routes);
+    server.route(require('./lib/routes')(server));
 
     // Add canonical protocol+host redirect extension function
     server.ext('onPostHandler', (request, h) => {
