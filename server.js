@@ -10,7 +10,7 @@ const vision = require('vision');
 
 const config = require('./lib/config');
 const utils = require('./lib/utils');
-const viewHelpers = require('./lib/view-helpers');
+const viewHelpers = require('./lib/viewHelpers');
 
 throng({
     workers: config.workers,
@@ -68,7 +68,7 @@ async function start() {
     await server.register(vision);
 
     const hashedFileNames = await utils.getRevManifest();
-    const partiallyAppliedStaticHelper = viewHelpers.static.bind(null, hashedFileNames);
+    const partiallyAppliedStaticPathHelper = viewHelpers.staticPath.bind(null, hashedFileNames);
 
     // Initialize Vision view manager
     server.views({
@@ -78,7 +78,7 @@ async function start() {
         context: {
             'appEnv': config.env,
             'appVersion': appVersion,
-            'static': partiallyAppliedStaticHelper,
+            'staticPath': partiallyAppliedStaticPathHelper,
         },
     });
 
@@ -86,7 +86,7 @@ async function start() {
     server.route(require('./lib/routes')(server));
 
     // Add canonical protocol+host redirect extension function
-    server.ext('onPostHandler', (request, h) => {
+    server.ext('onPostHandler', function(request, h) {
         const requestHost = request.info.host;
         const requestPath = request.path;
         const requestProtocol = request.headers['x-forwarded-proto'] || 'http';
@@ -110,7 +110,7 @@ async function start() {
     // Intercept Inert’s directory handler JSON errors and render error view
     // instead. This feels like a bad solution, but it appears to be the only
     // way: https://github.com/hapijs/inert/issues/41
-    server.ext('onPreResponse', (request, h) => {
+    server.ext('onPreResponse', function (request, h) {
         if ( !(request.response instanceof Boom) ) {
             return h.continue;
         }
@@ -121,7 +121,7 @@ async function start() {
             boomError.typeof === Boom.notFound &&
             boomError.output.statusCode === 404 &&
             typeof boomError.data.path !== 'undefined' &&
-            boomError.data.path.indexOf('static-build') !== -1
+            boomError.data.path.indexOf('static') !== -1
         ) {
             return h.view('error')
                 .code(404);
