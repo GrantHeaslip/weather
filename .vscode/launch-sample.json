@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "protocol": "inspector",
+            "name": "Development",
+            "runtimeExecutable": "heroku",
+            "runtimeArgs": [
+                "local",
+                "-f",
+                "Procfile-dev"
+            ],
+            "port": 9229,
+            "restart": true,
+            "console": "internalConsole",
+            "internalConsoleOptions": "neverOpen",
+        }
+    ]
+}

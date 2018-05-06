@@ -12,12 +12,16 @@ const config = require('./lib/config');
 const utils = require('./lib/utils');
 const viewHelpers = require('./lib/viewHelpers');
 
-throng({
-    workers: config.workers,
-    lifetime: Infinity,
-    master: startMaster,
-    start: start,
-});
+if (config.env === 'development') {
+    start();
+} else {
+    throng({
+        workers: config.workers,
+        lifetime: Infinity,
+        master: startMaster,
+        start: start,
+    });
+}
 
 function startMaster() {
     console.info('Throng master process started.');
