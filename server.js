@@ -75,10 +75,13 @@ async function start() {
         engines: { ejs: ejs },
         relativeTo: __dirname,
         path: 'templates',
-        context: {
-            'appEnv': config.env,
-            'appVersion': appVersion,
-            'staticPath': partiallyAppliedStaticPathHelper,
+        context: function (request) {
+            return {
+                'appEnv': config.env,
+                'appVersion': appVersion,
+                'canonicalUrl': utils.getCanonicalUrl(request.url.path),
+                'staticPath': partiallyAppliedStaticPathHelper,
+            };
         },
     });
 
