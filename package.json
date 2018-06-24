@@ -15,7 +15,7 @@
         "heroku-local-debug": "node_modules/heroku/bin/run local -f Procfile-debug",
         "heroku-local-dev": "node_modules/heroku/bin/run local -f Procfile-dev",
         "start": "node server.js",
-        "start-dev": "node ./node_modules/nodemon/bin/nodemon.js server.js",
+        "start-dev": "node ./node_modules/nodemon/bin/nodemon.js --ext ejs,js server.js",
         "heroku-postbuild": "gulp build"
     },
     "engines": {
