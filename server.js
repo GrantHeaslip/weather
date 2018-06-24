@@ -55,9 +55,12 @@ async function start() {
         compression: {
             minBytes: 512,
         },
-        debug: {
-            request: ['error'] // TODO: Make env-dependent
-        },
+        // Note: Commented out because of what seems to be Hapi.js bug causing
+        // erroneous “Debug: request, error, close” and “Debug: response, error,
+        // close” error logs. (https://github.com/hapijs/hapi/issues/2649)
+        // debug: {
+        //     request: ['error'] // TODO: Make env-dependent
+        // },
         host: '0.0.0.0',
         port: config.port,
         routes: {
