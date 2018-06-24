@@ -1,0 +1,118 @@
+{
+    "a few clouds": [
+        "Cloud-Sun",
+        "Cloud-Moon"
+    ],
+    "a few showers": [
+        "Cloud-Drizzle-Sun",
+        "Cloud-Drizzle-Moon"
+    ],
+    "a few showers or drizzle": [
+        "Cloud-Drizzle-Sun",
+        "Cloud-Drizzle-Moon"
+    ],
+    "a few showers or thunderstorms": [
+        "Cloud-Lightning-Sun",
+        "Cloud-Lightning-Moon"
+    ],
+    "a few thunderstorms": [
+        "Cloud-Lightning-Sun",
+        "Cloud-Lightning-Moon"
+    ],
+    "a mix of sun and cloud": [
+        "Cloud-Sun",
+        "Cloud-Sun"
+    ],
+    "chance of flurries": [
+        "Cloud-Snow-Sun-Alt",
+        "Cloud-Snow-Moon-Alt"
+    ],
+    "chance of showers": [
+        "Cloud-Drizzle-Sun",
+        "Cloud-Drizzle-Moon"
+    ],
+    "chance of showers or drizzle": [
+        "Cloud-Drizzle-Sun",
+        "Cloud-Drizzle-Moon"
+    ],
+    "chance of thunderstorms": [
+        "Cloud-Lightning-Sun",
+        "Cloud-Lightning-Moon"
+    ],
+    "chance of showers or thunderstorms": [
+        "Cloud-Lightning-Sun",
+        "Cloud-Lightning-Moon"
+    ],
+    "clear": [
+        "Sun",
+        "Moon"
+    ],
+    "clearing": [
+        "Cloud-Sun",
+        "Cloud-Moon"
+    ],
+    "cloudy": [
+        "Cloud"
+    ],
+    "cloudy periods": [
+        "Cloud-Sun",
+        "Cloud-Moon"
+    ],
+    "increasing cloudiness": [
+        "Cloud"
+    ],
+    "light rain": [
+        "Cloud-Drizzle-Alt"
+    ],
+    "light rainshower": [
+        "Cloud-Drizzle-Alt"
+    ],
+    "mainly clear": [
+        "Cloud-Sun",
+        "Cloud-Moon"
+    ],
+    "mainly cloudy": [
+        "Cloud"
+    ],
+    "mainly sunny": [
+        "Sun"
+    ],
+    "mostly cloudy": [
+        "Cloud"
+    ],
+    "normal": [
+        "Cloud-Sun",
+        "Cloud-Moon"
+    ],
+    "partly cloudy": [
+        "Cloud-Sun",
+        "Cloud-Moon"
+    ],
+    "periods of drizzle": [
+        "Cloud-Drizzle-Sun-Alt",
+        "Cloud-Drizzle-Moon-Alt"
+    ],
+    "periods of rain": [
+        "Cloud-Drizzle-Sun",
+        "Cloud-Drizzle-Moon"
+    ],
+    "periods of snow": [
+        "Cloud-Snow-Sun-Alt",
+        "Cloud-Snow-Moon-Alt"
+    ],
+    "rain": [
+        "Cloud-Rain"
+    ],
+    "showers": [
+        "Cloud-Drizzle"
+    ],
+    "showers or drizzle": [
+        "Cloud-Drizzle"
+    ],
+    "sunny": [
+        "Sun"
+    ],
+    "thunderstorm with light rainshowers": [
+        "Cloud-Lightning"
+    ]
+}
