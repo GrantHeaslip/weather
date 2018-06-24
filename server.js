@@ -86,6 +86,7 @@ async function start() {
             return {
                 'appEnv': config.env,
                 'appVersion': appVersion,
+                'getTemperatureCssColor': viewHelpers.getTemperatureCssColor,
                 'canonicalUrl': utils.getCanonicalUrl(request.url.path),
                 'staticPath': partiallyAppliedStaticPathHelper,
             };
