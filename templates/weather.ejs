@@ -15,7 +15,7 @@
         />
     </div>
     <div class="text-container">
-        <select>
+        <select class="js-city-select">
             <% for (const [citySlug, cityName] of Object.entries(cityNamesBySlug)) { %>
                 <option
                     <% if (citySlug === currentCitySlug) { %>
