@@ -1,1 +1,1 @@
-web: node ./node_modules/nodemon/bin/nodemon.js --ext ejs,js server.js
+web: node ./node_modules/nodemon/bin/nodemon.js --ext ejs,js,json server.js

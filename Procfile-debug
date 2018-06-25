@@ -1,1 +1,1 @@
-web: node ./node_modules/nodemon/bin/nodemon.js --ext ejs,js --inspect-brk=9229 server.js
+web: node ./node_modules/nodemon/bin/nodemon.js --ext ejs,js,json --inspect-brk=9229 server.js
