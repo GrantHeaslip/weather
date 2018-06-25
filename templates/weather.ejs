@@ -4,16 +4,14 @@
         class="
             icon-container
         "
-        style="background-color: <%= getTemperatureCssColor(data.current.temperature) %>;"
+        style="background-color: <%= currentConditions.temperatureBackgroundCssColor %>;"
     >
         <img
             class="
-                <% if (Math.abs(data.current.temperature) > colorInvertThreshold) { %>
-                    dark
-                <% } %>
                 icon
+                <%= currentConditions.temperatureBackgroundIsDark ? 'dark' : '' %>
             "
-            src="<%= staticPath(data.current.climaconSrc) %>"
+            src="<%= staticPath(currentConditions.climaconSrc) %>"
         />
     </div>
     <div class="text-container">
@@ -27,8 +25,8 @@
                 ><%= cityName %></option>
             <% } %>
         </select>
-        <p class="temp" id="current-temp"><%= data.current.temperature %>°C</p>
-        <p class="description" id="current-description"><%= data.current.description %></p>
+        <p class="temp" id="current-temp"><%= currentConditions.temperature %>°C</p>
+        <p class="description" id="current-description"><%= currentConditions.description %></p>
     </div>
 </section>
 <section id="forecasts">
@@ -37,15 +35,25 @@
             <tr>
                 <th class="icon"></th>
                 <th class="datetime">Date</th>
-                <th class="low">Low</th>
-                <th class="high">High</th>
+                <th
+                    class="low"
+                    style="background-color: <%= currentConditions.temperatureBackgroundCssColor %>;"
+                >Low</th>
+                <th
+                    class="high"
+                    style="background-color: <%= currentConditions.temperatureBackgroundCssColor %>;"
+                >High</th>
                 <th class="pop">POP</th>
                 <th class="description">Description</th>
             </tr>
         </thead>
         <tbody>
-            <% for (const forecast of data.forecasts) { %>
-                <tr>
+            <% for (const forecast of forecasts) { %>
+                <tr
+                    <% if (forecast.isDay === false) { %>
+                        class="night-row"
+                    <% } %>
+                >
                     <td class="icon">
                         <div class="icon-container">
                             <img
@@ -54,30 +62,48 @@
                             />
                         </div>
                     </td>
+
                     <td class="datetime"><%= forecast.datetime %></td>
+
                     <% if (typeof forecast.low !== 'undefined') { %>
                         <td
                             class="
-                                <% if (Math.abs(data.current.temperature) > colorInvertThreshold) { %>
-                                    dark
-                                <% } %>
                                 low
+                                <%= forecast.temperatureBackgroundIsDark ? 'dark' : '' %>
                             "
-                            style="background-color: <%= getTemperatureCssColor(forecast.low) %>;"
+                            style="background-color: <%= forecast.temperatureBackgroundCssColor %>;"
                         ><%= forecast.low %></td>
                     <% } else { %>
                         <td class="low"></td>
                     <% } %>
 
-                    <td class="high"></td>
-                    <td class="pop"></td>
+                    <% if (typeof forecast.high !== 'undefined') { %>
+                        <td
+                            class="
+                                high
+                                <%= forecast.temperatureBackgroundIsDark ? 'dark' : '' %>
+                            "
+                            style="background-color: <%= forecast.temperatureBackgroundCssColor %>;"
+                        ><%= forecast.high %></td>
+                    <% } else { %>
+                        <td class="high"></td>
+                    <% } %>
+
+                    <% if (typeof forecast.pop !== 'undefined') { %>
+                        <td
+                            class="
+                                pop
+                                <%= forecast.popBackgroundIsDark ? 'dark' : '' %>
+                            "
+                            style="background-color: <%= forecast.popBackgroundCssColor %>;"
+                        ><%= forecast.pop %></td>
+                    <% } else { %>
+                        <td class="pop"></td>
+                    <% } %>
                     <td class="description"><%= forecast.description %></td>
                 </tr>
             <% } %>
         </tbody>
     </table>
 </section>
-<footer>
-    <p>Developed by <a href="http://grant.heaslip.me/">Grant Heaslip</a>. <a id="weather-page-link" href="http://weather.gc.ca/canada_e.html">Data</a> from <a href="http://weather.gc.ca/business/index_e.html#rss">Environment Canada</a> via <a href="https://developer.yahoo.com/yql/">YQL</a>. <a href="http://adamwhitcroft.com/climacons/">Icons by Adam Whitcroft</a>.</p>
-</footer>
 <%- include('includes/layout/bottom') %>

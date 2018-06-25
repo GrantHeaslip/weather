@@ -3,5 +3,7 @@
     "blueBase": 255,
     "highCap": 40,
     "lowCap": -40,
-    "colorInvertThreshold": 25
+    "popForegroundColorInvertThreshold": 50,
+    "popBackgroundMinRgbValue": 85,
+    "temperatureForegroundColorInvertThreshold": 25
 }
