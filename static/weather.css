@@ -9,7 +9,7 @@ html, body {
     font-size-adjust: 0.466;
     line-height: 1.5em;
     font-weight: 400;
-    text-rendering: optimizelegibility;
+    text-rendering: optimizeLegibility;
     -webkit-text-size-adjust: 100%;
     margin: 0em;
     background-color: #666;
@@ -109,7 +109,6 @@ html, body {
     float: left;
 }
 
-
 #current p.temp {
     font-size: 3rem;
     line-height: 3rem;
@@ -149,7 +148,6 @@ html, body {
 }
 
 #forecasts .datetime {
-    /*width: 8rem;*/
     width: 40%;
 }
 
@@ -179,7 +177,7 @@ html, body {
     height: auto;
 }
 
-#forecasts tr td.dark, #forecasts tr th.dark  {
+#forecasts tr td.dark, #forecasts tr th.dark {
     color: #fff !important;
 }
 
