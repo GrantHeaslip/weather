@@ -116,7 +116,6 @@ async function start() {
         return h.continue;
     });
 
-
     // Intercept Inert’s directory handler JSON errors and render error view
     // instead. This feels like a bad solution, but it appears to be the only
     // way: https://github.com/hapijs/inert/issues/41

@@ -15,11 +15,13 @@ if (document.readyState === 'interactive' || document.readyState === 'complete')
 function onDocumentInteractive() {
     var citySelect = document.querySelector('.js-city-select');
 
-    citySelect.addEventListener(
-        'change',
-        function(_event) {
-            window.location.href = '/city/' + citySelect.value + '.html';
-        },
-        false
-    );
+    if (citySelect instanceof HTMLSelectElement) {
+        citySelect.addEventListener(
+            'change',
+            function () {
+                window.location.href = '/city/' + citySelect.value + '.html';
+            },
+            false
+        );
+    }
 }
