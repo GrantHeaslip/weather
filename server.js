@@ -47,9 +47,8 @@ async function start(workerId) {
             {
                 name: 'redis',
                 engine: catboxRedis,
-                host: '127.0.0.1',
                 partition: cachePartitionName,
-                port: 6379,
+                url: config.redisUrl,
             },
         ],
         compression: {
