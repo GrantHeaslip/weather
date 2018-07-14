@@ -74,8 +74,11 @@ async function start(workerId) {
     await server.register(inert);
     await server.register(vision);
 
-    const hashedFileNames = await utils.getRevManifest();
-    const partiallyAppliedStaticPathHelper = viewHelpers.staticPath.bind(null, hashedFileNames);
+    // TODO: Restore once build set up
+    // const hashedFileNames = await utils.getRevManifest();
+    // const partiallyAppliedStaticPathHelper = viewHelpers.staticPath.bind(null, hashedFileNames);
+
+    const partiallyAppliedStaticPathHelper = viewHelpers.staticPath.bind(null, {});
 
     // Initialize Vision view manager
     server.views({
