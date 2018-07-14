@@ -13,7 +13,7 @@ const utils = require('./lib/utils');
 const viewHelpers = require('./lib/viewHelpers');
 
 if (config.env === 'development') {
-    start();
+    start(1);
 } else {
     throng({
         workers: config.workers,
@@ -27,7 +27,7 @@ function startMaster() {
     console.info('Throng master process started.');
 }
 
-async function start() {
+async function start(workerId) {
     if (config.env == 'development') {
         console.info('Starting in development mode.');
     } else {
@@ -147,5 +147,9 @@ async function start() {
     catch (err) {
         console.error('Error starting sever:', err);
         process.exit(1);
+    }
+
+    if (workerId === 1) {
+        utils.startCityWeatherDataBackgroundUpdateLoop(server);
     }
 }
