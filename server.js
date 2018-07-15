@@ -13,36 +13,24 @@ const utils = require('./lib/utils');
 const viewHelpers = require('./lib/viewHelpers');
 
 if (config.env === 'development') {
-    start(1);
+    console.info('Starting in development mode.');
+    startWorker(1);
 } else {
     throng({
         workers: config.workers,
         lifetime: Infinity,
         master: startMaster,
-        start: start,
+        start: startWorker,
     });
 }
 
-function startMaster() {
-    console.info('Throng master process started.');
-}
-
-async function start(workerId) {
-    if (config.env == 'development') {
-        console.info('Starting in development mode.');
-    } else {
-        console.info('Starting in production mode.');
-    }
-
+async function getServer() {
     const appVersion = await utils.getAppVersion();
 
     const cachePartitionName = `weather-${appVersion}`.replace(/(\.)/g, '-');
 
     // Create server
     const server = hapi.server({
-        app: {
-            version: appVersion,
-        },
         cache: [
             {
                 name: 'redis',
@@ -68,6 +56,24 @@ async function start(workerId) {
             }
         },
     });
+
+    return server;
+}
+
+async function startMaster() {
+    console.info('Starting in production mode.');
+
+    const server = await getServer();
+    await server.initialize();
+
+    utils.startCityWeatherDataBackgroundUpdateLoop(server);
+
+    console.info('Master (background update loop) process started.');
+}
+
+async function startWorker(workerId) {
+    const appVersion = await utils.getAppVersion();
+    const server = await getServer();
 
     // Register plugins
     await server.register(inert);
@@ -144,14 +150,14 @@ async function start(workerId) {
     // Start server
     try {
         await server.start();
-        console.info('Server started at ' + server.info.uri + '.');
+        console.info(`Worker (request handler) process ${workerId}/${config.workers} started`);
     }
     catch (err) {
         console.error('Error starting sever:', err);
         process.exit(1);
     }
 
-    if (workerId === 1) {
-        utils.startCityWeatherDataBackgroundUpdateLoop(server);
-    }
+    // if (workerId === 1) {
+    //     utils.startCityWeatherDataBackgroundUpdateLoop(server);
+    // }
 }
