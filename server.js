@@ -14,6 +14,7 @@ const viewHelpers = require('./lib/viewHelpers');
 
 if (config.env === 'development') {
     console.info('Starting in development mode.');
+    startMaster();
     startWorker(1);
 } else {
     throng({
@@ -61,14 +62,25 @@ async function getServer() {
 }
 
 async function startMaster() {
-    console.info('Starting in production mode.');
-
     const server = await getServer();
-    await server.initialize();
 
-    utils.startCityWeatherDataBackgroundUpdateLoop(server);
+    (async function attemptToInitializeServer() {
+        try {
+            await server.initialize();
+            utils.startCityWeatherDataBackgroundUpdateLoop(server);
+            console.info('Master (background update loop) process started.');
+        } catch (error) {
+            server.stop();
 
-    console.info('Master (background update loop) process started.');
+            if (error.code === 'ECONNREFUSED' && error.port === 6379) {
+                console.warn('Couldn’t start master (background update loop) process because Redis is inaccessible. Will retry in 30 seconds.');
+
+                setTimeout(attemptToInitializeServer, 30000);
+            } else {
+                console.warn('Unexpected error while starting master (background update loop) process:', error);
+            }
+        }
+    })();
 }
 
 async function startWorker(workerId) {
@@ -147,17 +159,20 @@ async function startWorker(workerId) {
         return h.continue;
     });
 
-    // Start server
-    try {
-        await server.start();
-        console.info(`Worker (request handler) process ${workerId}/${config.workers} started`);
-    }
-    catch (err) {
-        console.error('Error starting sever:', err);
-        process.exit(1);
-    }
+    (async function attemptToStartServer() {
+        try {
+            await server.start();
+            console.info(`Worker (request handler) process ${workerId}/${config.workers} started`);
+        } catch (error) {
+            server.stop();
 
-    // if (workerId === 1) {
-    //     utils.startCityWeatherDataBackgroundUpdateLoop(server);
-    // }
+            if (error.code === 'ECONNREFUSED' && error.port === 6379) {
+                console.warn(`Couldn’t start worker (request handler) process ${workerId}/${config.workers} because Redis is inaccessible. Will retry in 30 seconds.`);
+
+                setTimeout(attemptToStartServer, 30000);
+            } else {
+                console.warn(`Unexpected error while starting worker (request handler) process ${workerId}/${config.workers}:`, error);
+            }
+        }
+    })();
 }
