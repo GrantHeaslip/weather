@@ -23,6 +23,10 @@
         "Cloud-Sun",
         "Cloud-Sun"
     ],
+    "chance of drizzle": [
+        "Cloud-Drizzle-Sun",
+        "Cloud-Drizzle-Moon"
+    ],
     "chance of flurries": [
         "Cloud-Snow-Sun-Alt",
         "Cloud-Snow-Moon-Alt"
@@ -58,6 +62,9 @@
         "Cloud-Sun",
         "Cloud-Moon"
     ],
+    "drizzle": [
+        "Cloud-Drizzle-Alt"
+    ],
     "increasing cloudiness": [
         "Cloud"
     ],
@@ -76,6 +83,10 @@
     ],
     "mainly sunny": [
         "Sun"
+    ],
+    "mist": [
+        "Cloud-Fog-Sun",
+        "Cloud-Fog-Moon"
     ],
     "mostly cloudy": [
         "Cloud"
