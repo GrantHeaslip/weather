@@ -19,7 +19,7 @@ function onDocumentInteractive() {
         citySelect.addEventListener(
             'change',
             function () {
-                window.location.href = '/city/' + citySelect.value + '.html';
+                window.location.href = '/cities/' + citySelect.value + '.html';
             },
             false
         );
