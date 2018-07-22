@@ -7,6 +7,7 @@
         style="background-color: <%= currentConditions.temperatureBackgroundCssColor %>;"
     >
         <img
+            alt=""
             class="
                 icon
                 <%= currentConditions.temperatureBackgroundIsDark ? 'dark' : '' %>
@@ -57,6 +58,7 @@
                     <td class="icon">
                         <div class="icon-container">
                             <img
+                                alt=""
                                 class="icon"
                                 src="<%= staticPath(forecast.climaconSrc) %>"
                             />
