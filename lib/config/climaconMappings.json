@@ -58,6 +58,9 @@
         "Cloud-Sun",
         "Cloud-Moon"
     ],
+    "drizzle": [
+        "Cloud-Drizzle-Alt"
+    ],
     "increasing cloudiness": [
         "Cloud"
     ],
@@ -76,6 +79,10 @@
     ],
     "mainly sunny": [
         "Sun"
+    ],
+    "mist": [
+        "Cloud-Fog-Sun",
+        "Cloud-Fog-Moon"
     ],
     "mostly cloudy": [
         "Cloud"
