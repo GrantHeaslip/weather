@@ -72,7 +72,7 @@
                                 <%= forecast.temperatureBackgroundIsDark ? 'dark' : '' %>
                             "
                             style="background-color: <%= forecast.temperatureBackgroundCssColor %>;"
-                        ><%= forecast.low %></td>
+                        ><%= forecast.low %>°</td>
                     <% } else { %>
                         <td class="low"></td>
                     <% } %>
@@ -84,7 +84,7 @@
                                 <%= forecast.temperatureBackgroundIsDark ? 'dark' : '' %>
                             "
                             style="background-color: <%= forecast.temperatureBackgroundCssColor %>;"
-                        ><%= forecast.high %></td>
+                        ><%= forecast.high %>°</td>
                     <% } else { %>
                         <td class="high"></td>
                     <% } %>
@@ -96,7 +96,7 @@
                                 <%= forecast.popBackgroundIsDark ? 'dark' : '' %>
                             "
                             style="background-color: <%= forecast.popBackgroundCssColor %>;"
-                        ><%= forecast.pop %></td>
+                        ><%= forecast.pop %>%</td>
                     <% } else { %>
                         <td class="pop"></td>
                     <% } %>
