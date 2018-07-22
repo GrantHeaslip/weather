@@ -23,6 +23,10 @@
         "Cloud-Sun",
         "Cloud-Sun"
     ],
+    "chance of drizzle": [
+        "Cloud-Drizzle-Sun",
+        "Cloud-Drizzle-Moon"
+    ],
     "chance of flurries": [
         "Cloud-Snow-Sun-Alt",
         "Cloud-Snow-Moon-Alt"
