@@ -1,8 +1,14 @@
 # Weather changelog
 
+## 1.0.1 [2018-07-26]
+
+### Changes
+* Changed footer developer URL to [g.hslp.ca](https://g.hslp.ca/).
+* Updated description and author metadata.
+
 ## 1.0.0 [2018-07-22]
 
-(First version deployed to [weather.grant.heaslip.me](http://weather.grant.heaslip.me/), replacing old client-rendered version.)
+(First version deployed to [weather.grant.heaslip.me](https://weather.grant.heaslip.me/), replacing old client-rendered version.)
 
 ### Fixes
 * Forecasts without condition:icon mappings no longer have broken icons (added a default fallback icon).

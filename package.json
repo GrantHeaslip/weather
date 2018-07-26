@@ -1,12 +1,12 @@
 {
     "name": "weather",
-    "version": "1.0.0",
-    "description": "Node.js (server-rendered) rewrite of weather.grant.heaslip.me.",
-    "homepage": "http://weather.grant.heaslip.me/",
+    "version": "1.0.1",
+    "description": "Canadian weather website using Environment Canada data. Powered by Node.js and the Hapi framework.",
+    "homepage": "https://weather.g.hslp.ca/",
     "author": {
         "name": "Grant Heaslip",
-        "email": "grant@heaslip.me",
-        "url": "https://grant.heaslip.me/"
+        "email": "g@hslp.ca",
+        "url": "https://g.hslp.ca/"
     },
     "private": true,
     "main": "server.js",
