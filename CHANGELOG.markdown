@@ -1,5 +1,11 @@
 # Weather changelog
 
+## 1.0.1 [2018-07-26]
+
+### Changes
+* Changed footer developer URL to [g.hslp.ca](https://g.hslp.ca/).
+* Updated description and author metadata.
+
 ## 1.0.0 [2018-07-22]
 
 (First version deployed to [weather.grant.heaslip.me](https://weather.grant.heaslip.me/), replacing old client-rendered version.)
